@@ -1,9 +1,9 @@
 /*!
  * 
- *   @eddielee394/axios-route-params-utils v0.1.0
+ *   @eddielee394/axios-route-params-utils v0.1.1
  *   https://github.com/eddielee394/axios-route-params-utils
  * 
- *   Copyright (c) Francisco Hodge (https://github.com/hodgef)
+ *   Copyright (c) Eddie Padin (https://github.com/eddielee394)
  * 
  *   This source code is licensed under the MIT license found in the
  *   LICENSE file in the root directory of this source tree.
