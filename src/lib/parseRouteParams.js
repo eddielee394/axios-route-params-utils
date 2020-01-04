@@ -1,4 +1,4 @@
-import { filter, nth, split, trim, zipObject, camelCase } from "lodash";
+import { filter, nth, split, trim, zipObject } from "lodash";
 
 /**
  *
@@ -12,11 +12,6 @@ function parseRouteParams(path, url) {
   //first normalize the path & url, then split into arrays
   const pathSegments = split(path, "/");
   const urlSegments = split(url, "/");
-
-  //make sure the length of the pathSegments & urlSegments match otherwise throw an error
-  if (pathSegments.length !== urlSegments.length) {
-    console.log("the path & url do not match!");
-  }
 
   //filter the wildcard path segments & trim up the strings
   let wildcards = filter(pathSegments, _p => matcher(_p));

@@ -10,7 +10,7 @@ class App {
     );
     console.log(
       "parseRoutePrams: ",
-      parseRouteParams("form/:userId/:formTitle", "form/43/title"),
+      parseRouteParams("form/:userId", "form/43/title"),
       "params: ",
       userId,
       formTitle
