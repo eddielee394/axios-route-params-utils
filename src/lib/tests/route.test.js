@@ -25,4 +25,22 @@ describe("route tests", () => {
       expect.objectContaining({ status: 200 })
     );
   });
+
+  it("should set the wildcards as request params", () => {
+    const mock = new MockAdapter(axios);
+    const path = "/path/:param1/:param2";
+    const url = "/path/43/title";
+
+    mock.onGet(route(path)).reply(request => {
+      expect(request.params).toEqual(
+        expect.objectContaining({ param1: 43, param2: "title" })
+      );
+
+      return [200];
+    });
+
+    expect(axios.get(url)).resolves.toEqual(
+      expect.objectContaining({ status: 200 })
+    );
+  });
 });

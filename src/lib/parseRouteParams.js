@@ -1,4 +1,5 @@
-import { filter, nth, split, trim, zipObject } from "lodash";
+import { filter, nth, split, trim, zipObject, toNumber } from "lodash";
+
 
 /**
  *
@@ -25,6 +26,14 @@ function parseRouteParams(path, url) {
 
   //create the url values array from the wildcard indexes
   wildcardIndex.map(wildcard => urlValues.push(nth(urlSegments, wildcard)));
+
+  //convert any number strings to the correct type
+  urlValues = urlValues.map(val => {
+    if (!isNaN(val)) {
+      return toNumber(val);
+    }
+    return val;
+  });
 
   //create an object keyed by path wildcard & associated path string as the value
   const params = zipObject(wildcards, urlValues);
