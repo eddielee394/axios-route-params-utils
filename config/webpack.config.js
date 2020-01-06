@@ -200,7 +200,7 @@ module.exports = function(webpackEnv) {
       // We inferred the "public path" (such as / or /my-project) from homepage.
       // We use "/" in development.
       publicPath: publicPath,
-      library: "MyLibrary",
+      library: "axios-route-params-utils",
       libraryTarget: 'umd',
       umdNamedDefine: true,
       // Point sourcemap entries to original disk location (format as URL on Windows)
@@ -266,9 +266,9 @@ module.exports = function(webpackEnv) {
           cache: true,
           sourceMap: shouldUseSourceMap,
         }),
-        new webpack.BannerPlugin({ 
-          banner: banner, 
-          entryOnly: true 
+        new webpack.BannerPlugin({
+          banner: banner,
+          entryOnly: true
         }),
         new OptimizeCSSAssetsPlugin({
           cssProcessorOptions: {

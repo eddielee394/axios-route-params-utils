@@ -1,4 +1,5 @@
-import { filter, nth, split, trim, zipObject, camelCase } from "lodash";
+import { filter, nth, split, trim, zipObject, toNumber } from "lodash";
+
 
 /**
  *
@@ -13,11 +14,6 @@ function parseRouteParams(path, url) {
   const pathSegments = split(path, "/");
   const urlSegments = split(url, "/");
 
-  //make sure the length of the pathSegments & urlSegments match otherwise throw an error
-  if (pathSegments.length !== urlSegments.length) {
-    console.log("the path & url do not match!");
-  }
-
   //filter the wildcard path segments & trim up the strings
   let wildcards = filter(pathSegments, _p => matcher(_p));
   wildcards = wildcards.map(w => trim(w, ":"));
@@ -30,6 +26,14 @@ function parseRouteParams(path, url) {
 
   //create the url values array from the wildcard indexes
   wildcardIndex.map(wildcard => urlValues.push(nth(urlSegments, wildcard)));
+
+  //convert any number strings to the correct type
+  urlValues = urlValues.map(val => {
+    if (!isNaN(val)) {
+      return toNumber(val);
+    }
+    return val;
+  });
 
   //create an object keyed by path wildcard & associated path string as the value
   const params = zipObject(wildcards, urlValues);

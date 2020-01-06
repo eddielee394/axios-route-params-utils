@@ -1,5 +1,5 @@
 ## Overview
-> Utility functions for the axios library to allow extracting dynamic route segments as params.  WIP
+> Utility functions for the axios library to allow extracting dynamic route segments as params.  Useful whith axios-mock-adapter.
 
 ## 📦 Getting Started
 
@@ -8,25 +8,52 @@ npm install
 ```
 
 ## 🚀 Usage
-1. import the utility functions
 
-### npm
+### `parseRouteParams()`
+```sh
+import {parseRouteParams} from 'axios-route-params-utils';
+
+const obj = parseRouteParams("form/:formId/:formTitle", "form/43/title");
+
+console.log(obj);
+// output: {formId: 43, formTitle: "title"}
+
+//using object destructuring
+const {formId, formTitle} = parseRouteParams("form/:formId/:formTitle", "form/43/title");
+
+console.log(formId);
+// output: 43
+
+console.log(formTitle);
+//output: "title"
 ```
-import {route, parseRouteParams} from 'axios-route-params-utils';
 
- const obj = parseRouteParams("form/:userId/:formTitle", "form/43/title");
 
- console.log(obj);
- // returns {userId: 43, formTitle: "title"}
+### `route()`
+```sh
+import {route} from 'axios-route-params-utils';
 
- //using object destructuring
- const {userId, formTitle} = parseRouteParams("form/:userId/:formTitle", "form/43/title");
+//url passed to axios-mock-adapter: "/form/43/title"
 
- console.log(userId);
- // returns 43
+mock.onGet(route("/form/:formId/:formTitle")).reply(request => {
+//matched request url
+    console.log(request.url);
+    //output: "/form/43/title"
 
- console.log(formTitle);
- //returns "title"
+//request params object
+    console.log(request.params);
+    //output: {formId: 43, formTitle: 'title'}
+
+//destructured params
+    const {formId, formTitle} = request.params;
+
+    console.log(formId); 
+    //output: 43
+
+    console.log(formTitle); 
+    //output: 'title'
 
 ...
+}
+
 ```

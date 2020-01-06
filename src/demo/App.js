@@ -1,23 +1,33 @@
-import "./css/App.css";
-import { route, parseRouteParams } from "./../lib";
+import axios from "axios";
+import MockAdapter from "axios-mock-adapter";
+import { route } from "./../lib";
+
+const data = {
+  category: "testCategory",
+  id: 35,
+  name: "testName"
+};
+
+const mock = new MockAdapter(axios);
+
+mock.onGet(route("/users/:category/:id")).reply(request => {
+  const { category, id } = request.params;
+  console.log("category param: ", category, "id param: ", id);
+
+  return [200, data];
+});
 
 class App {
   constructor() {
-    parseRouteParams("form/:userId/:formTitle", "form/43/title");
-    const { userId, formTitle } = parseRouteParams(
-      "form/:userId/:formTitle",
-      "form/43/title"
-    );
-    console.log(
-      "parseRoutePrams: ",
-      parseRouteParams("form/:userId/:formTitle", "form/43/title"),
-      "params: ",
-      userId,
-      formTitle
-    );
-    console.log("route: ", route("/form/:userId/:formtitle"));
-    console.log("Demo loaded!");
+    this.handleAxiosRequest();
   }
+  
+  handleAxiosRequest = () => {
+    axios
+      .get("/users/testCategory/35")
+      .then(response => console.log("get response: ", response))
+      .catch(error => console.log("get error: ", error));
+  };
 }
 
 export default App;
