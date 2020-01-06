@@ -1,3 +1,8 @@
+![status]
+![npm]
+![github-issues]
+
+
 ## Overview
 > Utility functions for the axios library to allow extracting dynamic route segments as params.  Useful whith axios-mock-adapter.
 
@@ -57,3 +62,8 @@ mock.onGet(route("/form/:formId/:formTitle")).reply(request => {
 }
 
 ```
+
+<!--- Links --->
+[status]: https://img.shields.io/github/workflow/status/eddielee394/axios-route-params-utils/Build
+[github-issues]: https://img.shields.io/github/issues/eddielee394/axios-route-params-utils
+[npm]: https://img.shields.io/npm/v/@eddielee394/axios-route-params-utils
