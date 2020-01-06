@@ -11,7 +11,7 @@
     "coverage": "node scripts/test.js --coverage --watchAll=false",
     "postinstall": "node bin/postinstall",
     "prepare": "npm run build",
-    "trypublish": "npm publish || true"
+    "trypublish": "npm publish --access public || true"
   },
   "repository": {
     "type": "git",
