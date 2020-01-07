@@ -1,6 +1,6 @@
-import route from "../route";
 import MockAdapter from "axios-mock-adapter";
 import axios from "axios";
+import RouteFactory from "../routeFactory";
 
 let mock;
 
@@ -11,6 +11,7 @@ beforeAll(() => {
 describe("when route is requested", () => {
   const path = "/path/:param1/:param2";
   const url = "/path/43/title";
+  const { route } = new RouteFactory(axios);
 
   it("should replace params in the path and set the wildcards as request params", () => {
     mock.onGet(route(path)).reply(request => {

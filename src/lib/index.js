@@ -1,7 +1,4 @@
-import parseRouteParams from "./parseRouteParams";
-import route from "./route";
+import { getRoute, parseRouteParams } from "./route";
+import RouteFactory from "./routeFactory";
 
-export  {
-  parseRouteParams,
-  route
-};
+export { RouteFactory, getRoute, parseRouteParams };
