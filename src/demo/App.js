@@ -1,6 +1,6 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import { route } from "./../lib";
+import { RouteFactory } from "./../lib";
 
 const data = {
   category: "testCategory",
@@ -9,6 +9,7 @@ const data = {
 };
 
 const mock = new MockAdapter(axios);
+const { route } = new RouteFactory(axios);
 
 mock.onGet(route("/users/:category/:id")).reply(request => {
   const { category, id } = request.params;
@@ -21,7 +22,7 @@ class App {
   constructor() {
     this.handleAxiosRequest();
   }
-  
+
   handleAxiosRequest = () => {
     axios
       .get("/users/testCategory/35")

@@ -8,38 +8,34 @@
 
 ## 📦 Getting Started
 
-```
-npm install
+```sh
+//npm
+npm install @eddielee394/axios-route-params-utils
+
+//yarn
+yarn add @eddielee394/axios-route-params-utils
 ```
 
 ## 🚀 Usage
 
-### `parseRouteParams()`
+### `RouteFactory()`
 ```sh
-import {parseRouteParams} from 'axios-route-params-utils';
+import axios from "axios";
+import { RouteFactory } from "@eddielee394/axios-route-params-utils";
 
-const obj = parseRouteParams("form/:formId/:formTitle", "form/43/title");
-
-console.log(obj);
-// output: {formId: 43, formTitle: "title"}
-
-//using object destructuring
-const {formId, formTitle} = parseRouteParams("form/:formId/:formTitle", "form/43/title");
-
-console.log(formId);
-// output: 43
-
-console.log(formTitle);
-//output: "title"
+//instantiate the RouteFactory class with your axios instance
+const instance = new RouteFactory(axios);
 ```
-
 
 ### `route()`
 ```sh
-import {route} from 'axios-route-params-utils';
+import { RouteFactory } from "@eddielee394/axios-route-params-utils";
+
+//with a custom axios instance
+const instance = axios.create();
+const { route } = new RouteFactory(instance);
 
 //url passed to axios-mock-adapter: "/form/43/title"
-
 mock.onGet(route("/form/:formId/:formTitle")).reply(request => {
 //matched request url
     console.log(request.url);
