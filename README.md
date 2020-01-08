@@ -19,7 +19,7 @@ yarn add @eddielee394/axios-route-params-utils
 ## 🚀 Usage
 
 ### `RouteFactory()`
-```sh
+```js
 import axios from "axios";
 import { RouteFactory } from "@eddielee394/axios-route-params-utils";
 
@@ -28,7 +28,7 @@ const instance = new RouteFactory(axios);
 ```
 
 ### `route()`
-```sh
+```js
 import { RouteFactory } from "@eddielee394/axios-route-params-utils";
 
 //with a custom axios instance
