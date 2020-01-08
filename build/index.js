@@ -1,6 +1,6 @@
 /*!
  * 
- *   @eddielee394/axios-route-params-utils v0.1.6
+ *   @eddielee394/axios-route-params-utils v0.1.7
  *   https://github.com/eddielee394/axios-route-params-utils
  * 
  *   Copyright (c) Eddie Padin (https://github.com/eddielee394)
