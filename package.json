@@ -1,6 +1,6 @@
 {
   "name": "@eddielee394/axios-route-params-utils",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Axios utility functions to automatically handle extracting dynamic route parameters from url segments",
   "main": "build/index.js",
   "scripts": {
